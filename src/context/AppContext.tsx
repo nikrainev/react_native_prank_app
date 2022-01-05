@@ -1,7 +1,7 @@
 import React, {
-    createContext, FunctionComponent,
-    useContext,
-    useEffect,
+    createContext,
+    FunctionComponent,
+    ReactElement,
 } from 'react';
 import { IBool, useBool } from '../hooks/useBool';
 
@@ -11,7 +11,7 @@ interface IContext {
 const AppContext = createContext({} as IContext);
 
 interface IProps {
-    children: React.FunctionComponent,
+    children: ReactElement | ReactElement[];
 }
 
 export const AppProvider: FunctionComponent<Partial<IProps>> = (props) => {
