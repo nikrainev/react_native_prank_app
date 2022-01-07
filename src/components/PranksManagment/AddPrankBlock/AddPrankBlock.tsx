@@ -6,10 +6,23 @@ import {
     Text,
     View,
 } from 'react-native';
-import { TextInput, Card } from 'react-native-paper';
+import { TextInput, Card, Button } from 'react-native-paper';
+import { IInput } from '../../../models/Prank';
 
-const AddPrankBlock = () => {
+interface IProps {
+    onAddPrank: (input:IInput) => void
+}
+
+const AddPrankBlock = (props:IProps) => {
     const [prankName, setPrankName] = useState('');
+    const {
+        onAddPrank,
+    } = props;
+    const onSavePrank = () => {
+        onAddPrank({
+            name: prankName
+        })
+    }
     return (
         <Card style={styles.container}>
             <View style={styles.inputWr}>
@@ -21,6 +34,13 @@ const AddPrankBlock = () => {
                     onChangeText={text => setPrankName(text)}
                 />
             </View>
+            <Button
+                icon='plus'
+                mode='contained'
+                onPress={onSavePrank}
+            >
+               Save
+            </Button>
             <Text>
                 Add prank
             </Text>
