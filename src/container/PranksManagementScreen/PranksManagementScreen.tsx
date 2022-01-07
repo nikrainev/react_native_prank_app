@@ -7,9 +7,12 @@ import {
 import { Button } from 'react-native-paper';
 import { useBool } from '../../hooks/useBool';
 import { AddPrankBlock } from '../../components/PranksManagment/AddPrankBlock';
+import { PrankItem } from '../../components/PranksManagment/PrankItem';
+import { useApp } from '../../context/AppContext';
 
 const PranksManagementScreen = () => {
     const addPrankOpened = useBool(false);
+    const { pranks, onAddPrank } = useApp();
 
     return (
         <View style={styles.container}>
@@ -22,8 +25,11 @@ const PranksManagementScreen = () => {
                 { addPrankOpened.value ? 'Cancel' : 'Add prank' }
             </Button>
             {addPrankOpened.value && (
-                <AddPrankBlock />
+                <AddPrankBlock
+                    onAddPrank={onAddPrank}
+                />
             )}
+            <PrankItem />
         </View>
     );
 };
