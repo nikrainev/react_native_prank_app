@@ -5,12 +5,19 @@ import {
 } from 'react-native';
 import { Card } from 'react-native-paper';
 
-const PrankItem = () => {
+interface IProps {
+    name: string
+}
+
+const PrankItem = (props:IProps) => {
+    const {
+        name
+    } = props;
 
     return (
         <Card style={styles.container}>
             <Text>
-                Prank
+                {name}
             </Text>
         </Card>
     );

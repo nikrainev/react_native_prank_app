@@ -2,7 +2,8 @@ import React from 'react';
 import {
     Text,
     View,
-    StyleSheet
+    StyleSheet,
+    FlatList,
 } from 'react-native';
 import { Button } from 'react-native-paper';
 import { useBool } from '../../hooks/useBool';
@@ -29,7 +30,15 @@ const PranksManagementScreen = () => {
                     onAddPrank={onAddPrank}
                 />
             )}
-            <PrankItem />
+            <FlatList
+                data={pranks}
+                keyExtractor={prank => prank._id.toString()}
+                renderItem={({ item }) => (
+                    <PrankItem
+                       name={item.name}
+                    />
+                )}
+            />
         </View>
     );
 };
