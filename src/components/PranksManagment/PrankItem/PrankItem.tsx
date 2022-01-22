@@ -3,7 +3,12 @@ import {
     StyleSheet,
     Text,
 } from 'react-native';
-import { Card } from 'react-native-paper';
+import {
+    Card,
+    Button,
+    Menu,
+    Divider
+} from 'react-native-paper';
 
 interface IProps {
     name: string
@@ -14,11 +19,30 @@ const PrankItem = (props:IProps) => {
         name
     } = props;
 
+    const [visible, setVisible] = React.useState(false);
+
+    const openMenu = () => setVisible(true);
+
+    const closeMenu = () => setVisible(false);
+
+
     return (
         <Card style={styles.container}>
-            <Text>
-                {name}
-            </Text>
+            <Button
+                icon='plus'
+                mode='contained'
+            >
+                Save
+            </Button>
+            <Menu
+                visible={visible}
+                onDismiss={closeMenu}
+                anchor={<Button onPress={openMenu}>Show menu</Button>}>
+                <Menu.Item onPress={() => {}} title="Item 1" />
+                <Menu.Item onPress={() => {}} title="Item 2" />
+                <Divider />
+                <Menu.Item onPress={() => {}} title="Item 3" />
+            </Menu>
         </Card>
     );
 };

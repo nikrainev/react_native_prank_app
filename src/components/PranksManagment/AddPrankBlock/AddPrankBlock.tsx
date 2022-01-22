@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { TextInput, Card, Button } from 'react-native-paper';
 import { IInput } from '../../../models/Prank';
+import { useTranslation } from "react-i18next";
 
 interface IProps {
     onAddPrank: (input:IInput) => void
@@ -18,6 +19,9 @@ const AddPrankBlock = (props:IProps) => {
     const {
         onAddPrank,
     } = props;
+
+    const { t } = useTranslation();
+
     const onSavePrank = () => {
         onAddPrank({
             name: prankName
@@ -25,6 +29,9 @@ const AddPrankBlock = (props:IProps) => {
     }
     return (
         <Card style={styles.container}>
+            <Text>
+                {t('HELLO')}
+            </Text>
             <View style={styles.inputWr}>
                 <TextInput
                     mode="outlined"
